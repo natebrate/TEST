@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-<html lang="en"   xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"
-          content="width=device-width, initial-scale=1">
-    <title>Staff Management Page</title>
-
+    <meta charset="utf-8" >
+    <title>Edit Staff</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         * {box-sizing: border-box;}
@@ -84,7 +81,6 @@
                 border: 1px solid #ccc;
             }
         }
-
         .footer {
             position: fixed;
             left: 0;
@@ -97,88 +93,71 @@
     </style>
 </head>
 <body>
-<!--LEFT SIDE-->
 <div class="topnav">
     <a class="active" href="/">Home</a>
     <a href="/">Staff View</a>
     <a href="/animal_view">Animal View</a>
     <a href="/species_view">Species View</a>
     <div class="login-container">
-        <form action="#">
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for.." title="Type in a name">
+        <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
 </div>
 
+<div align="center">
+    <h1>Edit Species Member</h1>
+    <br />
+    <form action="#" th:action="@{/speciessave}" th:object="${Species}"
+          method="post">
 
-<div class="right">
-
-    <div align="center">
-        <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
-        <h1>Animal Records</h1>
-        <a href="/newanimal">Enter New Animal</a>
-        <br/><br/>
-        <table border="1" cellpadding="10" id="myTable">
-            <thead>
+        <table border="0" cellpadding="10">
             <tr>
-                <th>Animal ID</th>
-                <th>Name</th>
-                <th>Trainer</th>
-                <th>Species</th>
-                <th>Age</th>
-                <th>Sex</th>
-                <th>Weight</th>
-                <th>Actions</th>
+                <td>Species ID</td>
+                <td><input type="number" th:field="*{specID}" readonly="readonly" /></td>
             </tr>
-            </thead>
-            <tbody>
-            <!--Table to show all Staff information-->
-            <tr th:each="animal : ${animalList}">
-                <td th:text="${animal.animalID}">ID</td>
-                <td th:text="${animal.name}">Name</td>
-                <td th:text="${animal.trainerID}">Trainer</td>
-                <td th:text="${animal.speciesID}">Species</td>
-                <td th:text="${animal.age}">Age</td>
-                <td th:text="${animal.sex}">Sex</td>
-                <td th:text="${animal.weight}">Weight</td>
+            <tr>
+                <td>Species Type:</td>
                 <td>
-                    <a th:href="@{'/mod/' + ${animal.animalID}}">Edit</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/remove/' + ${animal.animalID}}">Delete</a>
+                    <input type="text" th:field="*{species}" readonly="readonly" />
                 </td>
             </tr>
-            </tbody>
+            <tr>
+                <td>Feeding Type:</td>
+                <td>
+                    <textarea type="number" th:field="*{feedingType}"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Quantity:</td>
+                <td>
+                    <input type="number" th:field="*{quantity}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td>
+                    <textarea type="number" th:field="*{feedingType}"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Location [Zone]:</td>
+                <td><select th:field="*{locationID}">
+                    <option th:value="1" th:text="Zone Esclipse"></option>
+                    <option th:value="2" th:text="Zone Badlands"></option>
+                    <option th:value="3" th:text="Jungle Time"></option>
+                    <option th:value="4" th:text="Wild Lands"></option>
+                </select></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
         </table>
-    </div>
+    </form>
 </div>
-</div>
-
-<script>
-    function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-</script>
-
-
 <div class="footer">
     <p>Seaside Development</p>
 </div>
-
 </body>
 </html>

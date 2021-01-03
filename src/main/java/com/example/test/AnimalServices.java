@@ -1,9 +1,7 @@
 package com.example.test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 /*
@@ -13,7 +11,6 @@ SERVICES FOR THE ANIMAL TABLE
 @Transactional
 //We create this class for the purpose of extensibility in future.
 public class AnimalServices {
-
     //we inject an instance of AnimalRepository via private field using @Autowired
     @Autowired
     private AnimalRepository repo;
@@ -36,8 +33,5 @@ public class AnimalServices {
     public void delete(int animalID) {
         repo.deleteById(animalID);
     }
-
-
-
 
 }

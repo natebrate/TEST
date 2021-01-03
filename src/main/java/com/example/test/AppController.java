@@ -98,7 +98,7 @@ public class AppController {
         return "redirect:/animal_view";
     }
 
-    //Edit Staff Member
+    //Edit Animal Member
     @RequestMapping("/mod/{animalID}")
     public ModelAndView showAnimalEdit(@PathVariable(name = "animalID") int animalID) {
         ModelAndView rav = new ModelAndView("animalEdit");
@@ -115,5 +115,56 @@ public class AppController {
     public String deleteAnimal(@PathVariable(name = "animalID") int animalID) {
         service.delete(animalID);
         return "redirect:/animal_view";
+    }
+
+
+    /*
+    Controller for Species
+     */
+    @Autowired
+    private SpeciesServices dao;
+    //View Page for viewing species members
+    @RequestMapping("/species_view")
+    public String viewSpeciesPage(Model model) {
+        List<Species> speciesList = dao.listAll();
+        model.addAttribute("speciesList", speciesList);
+
+        return "species_view";
+    }
+
+    //Allowing for A new species Member
+    @RequestMapping("/newspecies")
+    public String showNewSpecies(Model model) {
+        Species species = new Species();
+        model.addAttribute("Species", species);
+
+        return "new_species";
+    }
+
+    //Save for Species member
+    @RequestMapping(value = "/speciessave", method = RequestMethod.POST)
+    public String saveSpecies(@ModelAttribute("Species") Species species) {
+        dao.save(species);
+
+        return "redirect:/species_view";
+    }
+
+    //Edit Species Member
+    @RequestMapping("/edit1/{SpecID}")
+    public ModelAndView showSpeciesEdit(@PathVariable(name = "SpecID") int SpecID) {
+        ModelAndView rav = new ModelAndView("animalEdit");
+        Species species = dao.get(SpecID);
+        rav.addObject("Species", species);
+
+        return rav;
+    }
+
+    /*
+    It deletes record for the given species ID in URL and redirects to
+    */
+    @RequestMapping("/delete1/{SpecID}") //Delete Staff Member
+    public String deleteSpecies(@PathVariable(name = "SpecID") int animalID) {
+        dao.delete(animalID);
+        return "redirect:/species_view";
     }
 }

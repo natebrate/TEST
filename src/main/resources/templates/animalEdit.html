@@ -96,8 +96,8 @@
 <div class="topnav">
     <a class="active" href="#home">Home</a>
     <a href="index.html">Staff View</a>
-    <a href="#">Animal View</a>
-    <a href="#">Species View</a>
+    <a href="/animal_view">Animal View</a>
+    <a href="/species_view">Species View</a>
     <div class="login-container">
         <form action="/action_page.php">
             <input type="text" placeholder="Search.." name="search">
@@ -127,7 +127,16 @@
             </tr>
             <tr>
                 <td>Species ID:</td>
-                <td><input type="number" th:field="*{speciesID}" /></td>
+                <td>
+                    <select th:field="*{speciesID}">
+                        <option th:value="1" th:text="Mammals"></option>
+                        <option th:value="2" th:text="Birds"></option>
+                        <option th:value="3" th:text="Reptiles"></option>
+                        <option th:value="4" th:text="Amphibians"></option>
+                        <option th:value="5" th:text="Invertebrates"></option>
+                        <option th:value="6" th:text="Fish"></option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Age:</td>
