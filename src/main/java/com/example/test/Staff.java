@@ -97,8 +97,8 @@ public class Staff {
 
     public String toString() {
         return "StaffID: " + this.StaffID
-                + ". Age:" + this.Fname
-                + ". Id:" + this.Lname
+                + ". First Name:" + this.Fname
+                + ". Last Name:" + this.Lname
                 + ". Role" + this.Role
                 + ". password" + this.password
                 + ".username" + this.username

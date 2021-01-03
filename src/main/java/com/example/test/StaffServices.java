@@ -14,6 +14,7 @@ class in the service/business layer with the following code
 //SERVICES FOR THE STAFF TABLE
 public class StaffServices {
 
+    //we inject an instance of StaffRepository via private field using @Autowired
     @Autowired
     private StaffRepository repo;
 
