@@ -19,7 +19,6 @@ public class AppController {
 
     // handler methods go here..
 
-
     /*
     STAFF/USER CONTROLLER
      */
@@ -68,4 +67,53 @@ public class AppController {
         return "redirect:/";
     }
 
+    @Autowired
+    private AnimalServices service;
+    /*
+    ANIMAL CONTROLLERS
+     */
+    //View Page for viewing staff members
+    @RequestMapping("/animal_view")
+    public String viewAnimalPage(Model model) {
+        List<Animal> animalList = service.listAll();
+        model.addAttribute("animalList", animalList);
+
+        return "animal_view";
+    }
+
+    //Allowing for A new Animal Member
+    @RequestMapping("/newanimal")
+    public String showNewAnimal(Model model) {
+        Animal animal = new Animal();
+        model.addAttribute("Animal", animal);
+
+        return "new_animal";
+    }
+
+    //Save for Animal Staff
+    @RequestMapping(value = "/animalsave", method = RequestMethod.POST)
+    public String saveAnimal(@ModelAttribute("Animal") Animal animal) {
+        service.save(animal);
+
+        return "redirect:/animal_view";
+    }
+
+    //Edit Staff Member
+    @RequestMapping("/mod/{animalID}")
+    public ModelAndView showAnimalEdit(@PathVariable(name = "animalID") int animalID) {
+        ModelAndView rav = new ModelAndView("animalEdit");
+        Animal animal = service.get(animalID);
+        rav.addObject("Animal", animal);
+
+        return rav;
+    }
+
+    /*
+    It deletes record for the given animal ID in URL and redirects to
+    */
+    @RequestMapping("/remove/{animalID}") //Delete Staff Member
+    public String deleteAnimal(@PathVariable(name = "animalID") int animalID) {
+        service.delete(animalID);
+        return "redirect:/animal_view";
+    }
 }

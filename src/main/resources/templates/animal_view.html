@@ -98,56 +98,60 @@
 </head>
 <body>
 <!--LEFT SIDE-->
-    <div class="topnav">
-        <a class="active" href="#">Home</a>
-        <a href="/">Staff View</a>
-        <a href="/animal_view">Animal View</a>
-        <a href="#">Species View</a>
-        <div class="login-container">
-            <form action="#">
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for.." title="Type in a name">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
+<div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/">Staff View</a>
+    <a href="/animal_view">Animal View</a>
+    <a href="#">Species View</a>
+    <div class="login-container">
+        <form action="#">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for.." title="Type in a name">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
     </div>
+</div>
 
 
-    <div class="right">
+<div class="right">
 
-        <div align="center">
-            <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
-    <h1>Staff Records</h1>
-    <a href="/new">Enter New Staff</a>
-    <br/><br/>
-    <table border="1" cellpadding="10" id="myTable">
-        <thead>
-        <tr>
-            <th>StaffID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Role</th>
-            <th>Password</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!--Table to show all Staff information-->
-        <tr th:each="Staff : ${listStaff}">
-            <td th:text="${Staff.staffID}">ID</td>
-            <td th:text="${Staff.fname}">First Name</td>
-            <td th:text="${Staff.lname}">Last Name</td>
-            <td th:text="${Staff.role}">Role</td>
-            <td th:text="${Staff.password}">Password</td>
-            <td>
-                <a th:href="@{'/edit/' + ${Staff.staffID}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete/' + ${Staff.staffID}}">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div align="center">
+        <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+        <h1>Animal Records</h1>
+        <a href="/newanimal">Enter New Animal</a>
+        <br/><br/>
+        <table border="1" cellpadding="10" id="myTable">
+            <thead>
+            <tr>
+                <th>Animal ID</th>
+                <th>Name</th>
+                <th>Trainer</th>
+                <th>Species</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Weight</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--Table to show all Staff information-->
+            <tr th:each="animal : ${animalList}">
+                <td th:text="${animal.animalID}">ID</td>
+                <td th:text="${animal.name}">First Name</td>
+                <td th:text="${animal.trainerID}">Last Name</td>
+                <td th:text="${animal.speciesID}">Role</td>
+                <td th:text="${animal.age}">Password</td>
+                <td th:text="${animal.sex}">Password</td>
+                <td th:text="${animal.weight}">Password</td>
+                <td>
+                    <a th:href="@{'/mod/' + ${animal.animalID}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/remove/' + ${animal.animalID}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    </div>
+</div>
 </div>
 
 <script>

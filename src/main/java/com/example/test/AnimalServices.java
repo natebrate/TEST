@@ -11,14 +11,12 @@ SERVICES FOR THE ANIMAL TABLE
  */
 @Service
 @Transactional
-
 //We create this class for the purpose of extensibility in future.
 public class AnimalServices {
 
     //we inject an instance of AnimalRepository via private field using @Autowired
     @Autowired
     private AnimalRepository repo;
-
     //Retrieve All Elements From the Animal Table
     public List<Animal> listAll() {
         return repo.findAll();
@@ -30,14 +28,15 @@ public class AnimalServices {
     }
 
     //Search for particular AnimalID
-    public Animal get(long animalID) {
+    public Animal get(int animalID) {
         return repo.findById(animalID).get();
     }
 
     //DELETE THE Animal MEMBER
-    public void delete(long animalID) {
+    public void delete(int animalID) {
         repo.deleteById(animalID);
     }
+
 
 
 

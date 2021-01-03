@@ -11,8 +11,8 @@ public class Animal {
     // initiate variables
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long animalID; //primary key
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int animalID; //primary key
 
     private String name;
     private int trainerID;
@@ -26,7 +26,7 @@ public class Animal {
         /*empty constructor*/
     }
 
-    protected Animal(long animalID, String name, int trainerID, int speciesID, int age, String sex, float weight) {
+    protected Animal(int animalID, String name, int trainerID, int speciesID, int age, String sex, float weight) {
         super();
         this.animalID = animalID;
         this.name = name;
@@ -41,11 +41,11 @@ public class Animal {
     /*
     GETTERS AND SETTERS FOR THE ANIMAL INFO TABLE
      */
-    public long getAnimalID() {
+    public int getAnimalID() {
         return animalID;
     }
 
-    public void setAnimalID(long animalID) {
+    public void setAnimalID(int animalID) {
         this.animalID = animalID;
     }
 
