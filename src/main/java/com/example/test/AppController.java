@@ -19,10 +19,6 @@ public class AppController {
 
     // handler methods go here..
 
-    /*
-    Return the mapping of the webpages so program can find them
-    GetMapping as we are only obtaining the location
-     */
 
     /*
     STAFF/USER CONTROLLER
@@ -46,7 +42,7 @@ public class AppController {
 
     //Save for new Staff
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveStaff(@ModelAttribute("Staff") Staff staff) {
+    public String saveStaff(@ModelAttribute("staff") Staff staff) {
         services.save(staff);
 
         return "redirect:/";

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8"
+          content="width=device-width, initial-scale=1">
     <title>New Staff Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -85,55 +85,61 @@
     </style>
 </head>
 <body>
-<div class="topnav">
-    <a class="active" href="#home">Home</a>
-    <a href="index.html">Staff View</a>
-    <a href="#">Animal View</a>
-    <a href="#">Species View</a>
-    <div class="login-container">
-        <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
+<!--Top Navigation Bar-->
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="index.html">Staff View</a>
+        <a href="#">Animal View</a>
+        <a href="#">Species View</a>
+        <div class="login-container">
+            <form action="#">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!--Main form to get a new user-->
+    <div align="center" style="padding-left:16px">
+        <h1>Staff Registration </h1>
+        <br />
+        <form action="#" th:action="@{/save}" th:object="${Staff}"
+              method="post">
+
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>Staff ID:</td>
+                    <td><input type="number" th:field="*{staffID}" /></td>
+                </tr>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" th:field="*{fname}" /></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" th:field="*{lname}" /></td>
+                </tr>
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" th:field="*{username}" /></td>
+                </tr>
+                <tr>
+                    <td>Role (Position):</td>
+                    <td><input type="text" th:field="*{role}" /></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="text" th:field="*{password}" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+            </table>
         </form>
     </div>
-</div>
 
-<div align="center" style="padding-left:16px">
-    <h1>Staff Registration </h1>
-    <br />
-    <form action="#" th:action="@{/save}" th:object="${Staff}"
-          method="post">
-
-        <table border="0" cellpadding="10">
-            <tr>
-                <td>Staff ID:</td>
-                <td><input type="number" th:field="*{staffID}" /></td>
-            </tr>
-            <tr>
-                <td>First Name:</td>
-                <td><input type="text" th:field="*{fname}" /></td>
-            </tr>
-            <tr>
-                <td>Last Name:</td>
-                <td><input type="text" th:field="*{lname}" /></td>
-            </tr>
-            <tr>
-                <td>Username:</td>
-                <td><input type="text" th:field="*{username}" /></td>
-            </tr>
-            <tr>
-                <td>Role (Position):</td>
-                <td><input type="text" th:field="*{role}" /></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><input type="text" th:field="*{password}" /></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit">Save</button> </td>
-            </tr>
-        </table>
-    </form>
-</div>
+    <div class="footer">
+        <p>Seaside Development</p>
+    </div>
 </body>
 </html>
