@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"   xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"
           content="width=device-width, initial-scale=1">
@@ -116,7 +117,7 @@
         <div align="center">
             <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
     <h1>Staff Records</h1>
-    <a href="StaffReg.html">Enter New Staff</a>
+    <a href="/new">Enter New Staff</a>
     <br/><br/>
     <table border="1" cellpadding="10" id="myTable">
         <thead>

@@ -19,7 +19,7 @@ public class Staff {
     private String Lname;
     private String Role;
     private String password;
-    private String username = Fname + Lname; //username is first name + last name
+    private String username; //username is first name + last name
     private boolean enabled;
 
     protected Staff() {
@@ -76,7 +76,7 @@ public class Staff {
     }
 
     public void setUsername(String username) {
-        this.username = Fname + Lname;
+        this.username = username;
     }
 
     public boolean isEnabled() {

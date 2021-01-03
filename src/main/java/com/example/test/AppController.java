@@ -28,6 +28,7 @@ public class AppController {
     public String viewStaffPage(Model model) {
         List<Staff> listStaff = services.listAll();
         model.addAttribute("listStaff", listStaff);
+
         return "index";
     }
 
@@ -37,12 +38,12 @@ public class AppController {
         Staff staff = new Staff();
         model.addAttribute("Staff", staff);
 
-        return "StaffReg";
+        return "new_staff";
     }
 
     //Save for new Staff
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveStaff(@ModelAttribute("staff") Staff staff) {
+    public String saveStaff(@ModelAttribute("Staff") Staff staff) {
         services.save(staff);
 
         return "redirect:/";

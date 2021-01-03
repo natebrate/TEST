@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"
           content="width=device-width, initial-scale=1">
@@ -82,13 +83,22 @@
                 border: 1px solid #ccc;
             }
         }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: dimgrey;
+            color: white;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 <!--Top Navigation Bar-->
     <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="index.html">Staff View</a>
+        <a class="active" href="/">Home</a>
+        <a href="/">Staff View</a>
         <a href="#">Animal View</a>
         <a href="#">Species View</a>
         <div class="login-container">
