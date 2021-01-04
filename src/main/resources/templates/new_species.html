@@ -137,7 +137,7 @@
             <tr>
                 <td>Feeding Type:</td>
                 <td>
-                    <textarea type="number" th:field="*{feedingType}"></textarea>
+                    <input type="text" th:field="*{feedingType}"></input>
                 </td>
             </tr>
             <tr>
@@ -149,17 +149,17 @@
             <tr>
                 <td>Description:</td>
                 <td>
-                    <textarea type="number" th:field="*{feedingType}"></textarea>
+                    <input type="text" th:field="*{description}">
                 </td>
             </tr>
             <tr>
                 <td>Location [Zone]:</td>
                 <td>
                     <select th:field="*{locationID}">
-                        <option th:value="1" th:text="Zone Esclipse"></option>
-                        <option th:value="2" th:text="Zone Badlands"></option>
-                        <option th:value="3" th:text="Jungle Time"></option>
-                        <option th:value="4" th:text="Wild Lands"></option>
+                        <option th:value="1" th:text="ZoneEsclipse"></option>
+                        <option th:value="2" th:text="ZoneBadlands"></option>
+                        <option th:value="3" th:text="JungleTime"></option>
+                        <option th:value="4" th:text="WildLands"></option>
                     </select>
                 </td>
             </tr>

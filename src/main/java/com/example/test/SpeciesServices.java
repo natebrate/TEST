@@ -13,7 +13,7 @@ SERVICES FOR THE SPECIES TABLE
 public class SpeciesServices {
     //we inject an instance of Species Repository via private field using @Autowired
     @Autowired
-    private speciesRepository repo;
+    private SpeciesRepository repo;
     //Retrieve All Elements From the Species Table
     public List<Species> listAll() {
         return repo.findAll();

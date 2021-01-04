@@ -3,7 +3,7 @@ package com.example.test;
 import javax.persistence.*;
 
 /*
-  this the class for the animalInfo Table
+  this the class for the Animal Table
  */
 @Entity
 @Table(name = "animal") //Table name

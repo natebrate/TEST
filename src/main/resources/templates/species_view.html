@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8"
           content="width=device-width, initial-scale=1">
-    <title>Staff Management Page</title>
+    <title>Animal Management Page</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -116,35 +116,36 @@
 
     <div align="center">
         <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
-        <h1>Species Records</h1>
-        <a href="/newspecies">Enter New Species</a>
+        <h1>Animal Records</h1>
+        <a href="/newanimal">Enter New Animal</a>
         <br/><br/>
         <table border="1" cellpadding="10" id="myTable">
             <thead>
             <tr>
-                <th>Animal ID</th>
-                <th>Name</th>
-                <th>Trainer</th>
+                <th>Species ID</th>
                 <th>Species</th>
-                <th>Age</th>
-                <th>Sex</th>
-                <th>Weight</th>
+                <th>Feeding Type</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Location</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <!--Table to show all Staff information-->
-            <tr th:each="species : ${speciesList}">
-                <td th:text="${species.specID}">ID</td>
+
+
+            <tr th:each="species : ${listSpecies}">
+                <td th:text="${species.specID}">Name</td>
                 <td th:text="${species.species}">Name</td>
                 <td th:text="${species.feedingType}">Trainer</td>
                 <td th:text="${species.quantity}">Species</td>
                 <td th:text="${species.description}">Age</td>
                 <td th:text="${species.locationID}">Sex</td>
                 <td>
-                    <a th:href="@{'/edit1/' + ${species.specID}}">Edit</a>
+                    <a th:href="@{'/put/' + ${species.specID}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete1/' + ${species.specID}}">Delete</a>
+                    <a th:href="@{'/kill/' + ${species.specID}}">Delete</a>
                 </td>
             </tr>
             </tbody>

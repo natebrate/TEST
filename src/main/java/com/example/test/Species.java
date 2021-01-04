@@ -2,21 +2,34 @@ package com.example.test;
 
 import javax.persistence.*;
 
+/*
+  this is the class for the Species Table
+ */
 @Entity
-@Table(name = "species")
+@Table(name = "species") //Table name
 public class Species {
-    //initiate Variables
-    private int SpecID;
+
+    //initiate
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int specID; //Primary Key
+
+    //rest of attributes
     private String Species;
     private String FeedingType;
     private int quantity;
     private String Description;
     private int LocationID;
 
+    protected Species() {
+        /*
+        Empty Constructor
+         */
+    }
 
-    protected Species(int SpecID, String Species, String FeedingType, int quantity, String Description, int LocationID) {
+    protected Species(int specID, String Species, String FeedingType, int quantity, String Description, int LocationID) {
         super();
-        this.SpecID = SpecID;
+        this.specID = specID;
         this.Species = Species;
         this.FeedingType = FeedingType;
         this.quantity = quantity;
@@ -24,19 +37,14 @@ public class Species {
         this.LocationID = LocationID;
     }
 
-    protected Species() {
-
-    }
 
     // GETTERS AND SETTERS
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getSpecID() {
-        return SpecID;
+        return specID;
     }
 
-    public void setSpecID(int SpecID) {
-        this.SpecID = SpecID;
+    public void setSpecID(int specID) {
+        this.specID = specID;
     }
 
     public String getSpecies() {
@@ -78,4 +86,13 @@ public class Species {
     public void setLocationID(int LocationID) {
         this.LocationID = LocationID;
     }
+
+    public String toString() {
+        return "Specie ID: " + this.specID
+                + ". Species:" + this.Species
+                + ". Feeding Type:" + this.FeedingType
+                + ". Quantity" + this.quantity
+                + ". Description" + this.Description
+                + ". Location" + this.LocationID;
+    } //example
 }

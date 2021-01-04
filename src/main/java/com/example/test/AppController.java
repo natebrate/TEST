@@ -17,6 +17,12 @@ public class AppController {
     @Autowired
     private StaffServices services;
 
+    @Autowired
+    private AnimalServices service;
+
+    @Autowired
+    private SpeciesServices speciesServices;
+
     // handler methods go here..
 
     /*
@@ -67,8 +73,6 @@ public class AppController {
         return "redirect:/";
     }
 
-    @Autowired
-    private AnimalServices service;
     /*
     ANIMAL CONTROLLERS
      */
@@ -121,13 +125,11 @@ public class AppController {
     /*
     Controller for Species
      */
-    @Autowired
-    private SpeciesServices dao;
     //View Page for viewing species members
-    @RequestMapping("/species_view")
+    @RequestMapping("species_view")
     public String viewSpeciesPage(Model model) {
-        List<Species> speciesList = dao.listAll();
-        model.addAttribute("speciesList", speciesList);
+        List<Species> listSpecies = speciesServices.listAll();
+        model.addAttribute("listSpecies", listSpecies);
 
         return "species_view";
     }
@@ -144,27 +146,27 @@ public class AppController {
     //Save for Species member
     @RequestMapping(value = "/speciessave", method = RequestMethod.POST)
     public String saveSpecies(@ModelAttribute("Species") Species species) {
-        dao.save(species);
+        speciesServices.save(species);
 
         return "redirect:/species_view";
     }
 
     //Edit Species Member
-    @RequestMapping("/edit1/{SpecID}")
+    @RequestMapping("/put/{SpecID}")
     public ModelAndView showSpeciesEdit(@PathVariable(name = "SpecID") int SpecID) {
-        ModelAndView rav = new ModelAndView("animalEdit");
-        Species species = dao.get(SpecID);
-        rav.addObject("Species", species);
+        ModelAndView pav = new ModelAndView("SpeciesEdit");
+        Species species = speciesServices.get(SpecID);
+        pav.addObject("Species", species);
 
-        return rav;
+        return pav;
     }
 
     /*
     It deletes record for the given species ID in URL and redirects to
     */
-    @RequestMapping("/delete1/{SpecID}") //Delete Staff Member
-    public String deleteSpecies(@PathVariable(name = "SpecID") int animalID) {
-        dao.delete(animalID);
+    @RequestMapping("/kill/{SpecID}") //Delete Staff Member
+    public String deleteSpecies(@PathVariable(name = "SpecID") int SpecID) {
+        speciesServices.delete(SpecID);
         return "redirect:/species_view";
     }
 }
