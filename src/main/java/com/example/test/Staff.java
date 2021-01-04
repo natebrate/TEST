@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "staff")
-//entity class named staff
+//entity class named Staff maps with table staff
 public class Staff {
 
     @Id

@@ -7,6 +7,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "animal") //Table name
+
+//entity class named Animal maps with table animal
 public class Animal {
     // initiate variables
 
@@ -39,7 +41,7 @@ public class Animal {
 
 
     /*
-    GETTERS AND SETTERS FOR THE ANIMAL INFO TABLE
+    GETTERS AND SETTERS FOR THE ANIMAL TABLE
      */
     public int getAnimalID() {
         return animalID;

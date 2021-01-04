@@ -3,10 +3,7 @@ package com.example.test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -15,13 +12,20 @@ import java.util.List;
 public class AppController {
 
     @Autowired
-    private StaffServices services;
+    private StaffServices services; //inject instance of the class
 
     @Autowired
-    private AnimalServices service;
+    private AnimalServices service; //inject instance of the class
 
     // handler methods go here..
+    // Manage the CRUD operations
 
+    //An attempt at an about oage
+    @GetMapping("/aboutus")
+    public String viewAboutUs(){
+        String test = "return Something";
+        return "AboutUs"; //Open the page on html it self
+    }
     /*
     STAFF/USER CONTROLLER
      */
@@ -31,10 +35,13 @@ public class AppController {
         List<Staff> listStaff = services.listAll();
         model.addAttribute("listStaff", listStaff);
 
-        return "index";
+        return "index"; //link to homepage
     }
 
     //Allowing for A new Staff Member
+    /*
+    The relative URL new is handled by the following method in the AppController class:
+     */
     @RequestMapping("/new")
     public String showNewForm(Model model) {
         Staff staff = new Staff();
@@ -43,7 +50,7 @@ public class AppController {
         return "new_staff";
     }
 
-    //Save for new Staff
+    //Code handler to save for new Staff
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveStaff(@ModelAttribute("Staff") Staff staff) {
         services.save(staff);
@@ -64,11 +71,18 @@ public class AppController {
     /*
     It deletes record for the given id in URL and redirects to
     */
+
+    /*
+    When the user clicks the Delete hyperlink, the corresponding product information is removed from the database, and the home page gets refreshed.
+    This done for all subsequent page, Animal & Species
+     */
     @RequestMapping("/delete/{staffID}") //Delete Staff Member
     public String delete(@PathVariable(name = "staffID") long StaffID) {
         services.delete(StaffID);
         return "redirect:/";
     }
+
+
 
     /*
     ANIMAL CONTROLLERS
@@ -120,7 +134,7 @@ public class AppController {
 
 
     @Autowired
-    private SpeciesServices speciesServices;
+    private SpeciesServices speciesServices; //inject instance of the class
     /*
     Controller for Species
      */

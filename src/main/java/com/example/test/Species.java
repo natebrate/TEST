@@ -7,6 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "species") //Table name
+//entity class named Species maps with table species
 public class Species {
 
     //initiate
