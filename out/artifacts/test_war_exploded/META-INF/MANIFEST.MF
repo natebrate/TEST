@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: nsbra1
+Build-Jdk: 15.0.1
+Implementation-Title: test
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.example
+Main-Class: ${start-class}
+
