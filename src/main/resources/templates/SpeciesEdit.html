@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" >
-    <title>Edit Staff</title>
+    <title>Edit Species</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         * {box-sizing: border-box;}
@@ -109,7 +109,7 @@
 <div align="center">
     <h1>Edit Species Member</h1>
     <br />
-    <form action="#" th:action="@{/speciessave}" th:object="${Species}"
+    <form action="#" th:action="@{/speciessave}" th:object="${species}"
           method="post">
 
         <table border="0" cellpadding="10">
@@ -120,34 +120,35 @@
             <tr>
                 <td>Species Type:</td>
                 <td>
-                    <input type="text" th:field="*{species}" readonly="readonly" />
+                    <select th:field="*{species}">
+                        <option th:value="1" th:text="Mammals"></option>
+                        <option th:value="2" th:text="Birds"></option>
+                        <option th:value="3" th:text="Reptiles"></option>
+                        <option th:value="4" th:text="Amphibians"></option>
+                        <option th:value="5" th:text="Invertebrates"></option>
+                        <option th:value="6" th:text="Fish"></option>
+                    </select>
                 </td>
             </tr>
             <tr>
                 <td>Feeding Type:</td>
-                <td>
-                    <textarea th:field="*{feedingType}"></textarea>
-                </td>
+                <td><input type="text" th:field="*{feedingType}" readonly="readonly"></td>
             </tr>
             <tr>
                 <td>Quantity:</td>
-                <td>
-                    <input type="number" th:field="*{quantity}" />
-                </td>
+                <td><input type="number" th:field="*{quantity}" /></td>
             </tr>
             <tr>
                 <td>Description:</td>
-                <td>
-                    <textarea th:field="*{description}"></textarea>
-                </td>
+                <td><input type="text" th:field="*{description}"></td>
             </tr>
             <tr>
                 <td>Location [Zone]:</td>
                 <td><select th:field="*{locationID}">
-                    <option th:value="1" th:text="Zone Esclipse"></option>
-                    <option th:value="2" th:text="Zone Badlands"></option>
-                    <option th:value="3" th:text="Jungle Time"></option>
-                    <option th:value="4" th:text="Wild Lands"></option>
+                    <option th:value="1" th:text="ZoneEsclipse"></option>
+                    <option th:value="2" th:text="ZoneBadlands"></option>
+                    <option th:value="3" th:text="JungleTime"></option>
+                    <option th:value="4" th:text="WildLands"></option>
                 </select></td>
             </tr>
             <tr>

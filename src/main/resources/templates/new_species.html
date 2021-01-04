@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8"
           content="width=device-width, initial-scale=1">
-    <title>New Staff Form</title>
+    <title>New Species Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         * {box-sizing: border-box;}
@@ -113,7 +113,7 @@
 <div align="center" style="padding-left:16px">
     <h1>Species Registration </h1>
     <br />
-    <form action="#" th:action="@{/speciessave}" th:object="${Species}"
+    <form action="#" th:action="@{/speciessave}" th:object="${species}"
           method="post">
 
         <table border="0" cellpadding="10">
@@ -136,9 +136,7 @@
             </tr>
             <tr>
                 <td>Feeding Type:</td>
-                <td>
-                    <input type="text" th:field="*{feedingType}"></input>
-                </td>
+                <td><input type="text" th:field="*{feedingType}"></td>
             </tr>
             <tr>
                 <td>Quantity:</td>

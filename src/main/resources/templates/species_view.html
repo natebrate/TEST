@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8"
           content="width=device-width, initial-scale=1">
-    <title>Animal Management Page</title>
+    <title>Species Management Page</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -116,8 +116,8 @@
 
     <div align="center">
         <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
-        <h1>Animal Records</h1>
-        <a href="/newanimal">Enter New Animal</a>
+        <h1>Species Records</h1>
+        <a href="/newspecies">Enter New Species</a>
         <br/><br/>
         <table border="1" cellpadding="10" id="myTable">
             <thead>

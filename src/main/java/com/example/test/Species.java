@@ -15,11 +15,11 @@ public class Species {
     private int specID; //Primary Key
 
     //rest of attributes
-    private String Species;
-    private String FeedingType;
+    private String species;
+    private String feeding_type;
     private int quantity;
-    private String Description;
-    private int LocationID;
+    private String description;
+    private int locationID;
 
     protected Species() {
         /*
@@ -27,14 +27,14 @@ public class Species {
          */
     }
 
-    protected Species(int specID, String Species, String FeedingType, int quantity, String Description, int LocationID) {
+    protected Species(int specID, String species, String feeding_type, int quantity, String description, int locationID) {
         super();
         this.specID = specID;
-        this.Species = Species;
-        this.FeedingType = FeedingType;
+        this.species = species;
+        this.feeding_type = feeding_type;
         this.quantity = quantity;
-        this.Description = Description;
-        this.LocationID = LocationID;
+        this.description = description;
+        this.locationID = locationID;
     }
 
 
@@ -48,19 +48,19 @@ public class Species {
     }
 
     public String getSpecies() {
-        return Species;
+        return species;
     }
 
     public void setSpecies(String Species) {
-        this.Species = Species;
+        this.species = species;
     }
 
     public String getFeedingType() {
-        return FeedingType;
+        return feeding_type;
     }
 
-    public void setFeedingType(String FeedingType) {
-        this.FeedingType = FeedingType;
+    public void setFeedingType(String feeding_type) {
+        this.feeding_type = feeding_type;
     }
 
     public int getQuantity() {
@@ -72,27 +72,27 @@ public class Species {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
-    public void setDescription(String Description) {
-        this.Description = Description;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getLocationID() {
-        return LocationID;
+        return locationID;
     }
 
-    public void setLocationID(int LocationID) {
-        this.LocationID = LocationID;
+    public void setLocationID(int locationID) {
+        this.locationID = locationID;
     }
 
     public String toString() {
         return "Specie ID: " + this.specID
-                + ". Species:" + this.Species
-                + ". Feeding Type:" + this.FeedingType
+                + ". Species:" + this.species
+                + ". Feeding Type:" + this.feeding_type
                 + ". Quantity" + this.quantity
-                + ". Description" + this.Description
-                + ". Location" + this.LocationID;
+                + ". Description" + this.description
+                + ". Location" + this.locationID;
     } //example
 }
